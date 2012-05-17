@@ -131,15 +131,15 @@ class HistoryCompare(sublime_plugin.TextCommand):
             # Escape
             if index == -1:
                 return
-
+    
             # Trigger save before comparing, if required!
             if self.view.is_dirty():
-                self.view.run_command("save")
-
+                self.view.run_command("save")   
+   
             # From
             from_file = files[index]
             from_file_path = os.path.join(history_path, from_file)
-            with open(from_file_path, "r") as f:
+            with open(from_file_path, "r") as f: 
                 from_content = f.readlines()
 
             # To
@@ -216,6 +216,15 @@ class HistoryIncrementalDiff(sublime_plugin.TextCommand):
         # diff_file_path = os.path.join(history_path, diff_file)
         # self.view.window().open_file(diff_file_path, sublime.TRANSIENT)
 
+class HistoryShowLastIncrementalDiff(sublime_plugin.TextCommand): 
+    def run(self, edit): 
+        with open(map_path, "rb") as map:
+            history_map = pickle.load(map)
+            history_list = history_map[self.view.file_name()]
+            print "history_map is: "
+            print history_map
+            print "and history_list: "
+            print history_list
 
 class HistoryDeleteAll(sublime_plugin.TextCommand):
 
