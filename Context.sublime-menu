@@ -14,7 +14,10 @@
 	}, {
 		"caption": "Incremental Diff",
 		"command": "history_incremental_diff"
-	}]
+	}, {
+		"caption": "My Command",
+		"command": "history_show_last_incremental_diff"		
+		}]
 }, {
 	"caption": "-"
 }]
